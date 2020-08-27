@@ -76,3 +76,444 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.0ms | Allocations: 828)
 
 
+Started GET "/" for ::1 at 2020-08-28 06:31:49 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.8ms | Allocations: 190)
+Completed 200 OK in 18ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 769)
+
+
+Started GET "/post/index" for ::1 at 2020-08-28 06:31:59 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/post/index"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/pages/index" for ::1 at 2020-08-28 06:32:35 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 123)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 57ms (Views: 55.1ms | ActiveRecord: 0.0ms | Allocations: 7207)
+
+
+Started GET "/users/auth/twitter" for ::1 at 2020-08-28 06:32:39 +0900
+Started GET "/users/auth/twitter" for ::1 at 2020-08-28 06:32:48 +0900
+Started GET "/users/auth/twitter/callback?oauth_token=M4BPKgAAAAABDvnRAAABdDHWbEQ&oauth_verifier=weuZrQHW8KBPLlYqY1JeywGZv4vR4ku2" for ::1 at 2020-08-28 06:32:51 +0900
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"M4BPKgAAAAABDvnRAAABdDHWbEQ", "oauth_verifier"=>"weuZrQHW8KBPLlYqY1JeywGZv4vR4ku2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? AND "users"."provider" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["uid", "816272815359787009"], ["provider", "twitter"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:8:in `find_for_oauth'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users/omniauth_callbacks_controller.rb:15:in `callback_from'
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms | Allocations: 1999)
+
+
+Started GET "/" for ::1 at 2020-08-28 06:32:53 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 8)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 274)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:45:51 +0900
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 270)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 1.7ms | Allocations: 25601)
+
+
+  
+ActionView::Template::Error (undefined method `username' for #<User:0x00007fcfe24e98c8>):
+    14:   <header>
+    15:   <nav>
+    16:       <% if user_signed_in? %>
+    17:       <strong><%= link_to current_user.username, pages_show_path %></strong>
+    18:       <%= link_to 'プロフィール変更', edit_user_registration_path %>
+    19:       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    20:   <% else %>
+  
+app/views/layouts/application.html.erb:17
+Started GET "/pages/index" for ::1 at 2020-08-28 06:46:31 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 270)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+Completed 200 OK in 49ms (Views: 36.5ms | ActiveRecord: 0.9ms | Allocations: 22521)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-28 06:46:34 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"o//1czJJ8HGn7vspeKfqvA1F27RsBXvZnXGCX3ta8LtF6FTfW9aKoDehZh1hjclp3mURfK4L3XPgWQSBiOJ3ig=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 0.1ms | Allocations: 4582)
+
+
+Started GET "/" for ::1 at 2020-08-28 06:46:34 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 18.6ms | Allocations: 190)
+Completed 200 OK in 21ms (Views: 19.8ms | ActiveRecord: 0.0ms | Allocations: 824)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:46:41 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 145)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.0ms | Allocations: 7853)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:50:08 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 270)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms | Allocations: 3927)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+  <head>
+    <title>InkGrow</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header>
+  <nav>
+      <% if user_signed_in? %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  </nav>
+</header>
+
+
+
+    <%= yield %>
+  </body>
+</html>
+
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:        <title>InkGrow</title>
+5:        <%= csrf_meta_tags %>
+6:        <%= csp_meta_tag %>
+7:    
+8:        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+9:        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+10:      </head>
+11:    
+12:      <body>
+13:    
+14:      <header>
+15:      <nav>
+16:          <% if user_signed_in? %>
+17:          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+18:      </nav>
+19:    </header>
+20:    
+21:    
+22:    
+23:        <%= yield %>
+24:      </body>
+25:    </html>
+  
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+Started GET "/pages/index" for ::1 at 2020-08-28 06:50:17 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 37)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1431)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+  <head>
+    <title>InkGrow</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header>
+  <nav>
+      <% if user_signed_in? %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  </nav>
+</header>
+
+
+
+    <%= yield %>
+  </body>
+</html>
+
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:        <title>InkGrow</title>
+5:        <%= csrf_meta_tags %>
+6:        <%= csp_meta_tag %>
+7:    
+8:        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+9:        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+10:      </head>
+11:    
+12:      <body>
+13:    
+14:      <header>
+15:      <nav>
+16:          <% if user_signed_in? %>
+17:          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+18:      </nav>
+19:    </header>
+20:    
+21:    
+22:    
+23:        <%= yield %>
+24:      </body>
+25:    </html>
+  
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+app/views/layouts/application.html.erb:28: syntax error, unexpected end-of-input, expecting end
+Started GET "/pages/index" for ::1 at 2020-08-28 06:50:33 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.3ms | ActiveRecord: 0.0ms | Allocations: 9896)
+
+
+Started GET "/users/auth/twitter" for ::1 at 2020-08-28 06:50:36 +0900
+Started GET "/users/auth/twitter" for ::1 at 2020-08-28 06:50:37 +0900
+Started GET "/users/auth/twitter/callback?oauth_token=2tgiLgAAAAABDvnRAAABdDHmtdQ&oauth_verifier=59wWhTWxdA1rqpdhxDz9jy2vlPwi2GEE" for ::1 at 2020-08-28 06:50:39 +0900
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"2tgiLgAAAAABDvnRAAABdDHmtdQ", "oauth_verifier"=>"59wWhTWxdA1rqpdhxDz9jy2vlPwi2GEE"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? AND "users"."provider" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["uid", "816272815359787009"], ["provider", "twitter"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:8:in `find_for_oauth'
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 0.8ms | Allocations: 12576)
+
+
+Started GET "/" for ::1 at 2020-08-28 06:50:40 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.2ms | Allocations: 189)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 824)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:50:44 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 123)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.3ms | Allocations: 8242)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:55:09 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.1ms | Allocations: 7009)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:55:10 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 36)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.1ms | Allocations: 7007)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:55:10 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 36)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.1ms | Allocations: 7006)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:55:38 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+Completed 200 OK in 14ms (Views: 14.1ms | ActiveRecord: 0.1ms | Allocations: 7030)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:55:49 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1512)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 3633)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% if user_signed_in? %>
+    <%= else %>
+      <%= link_to 'Twitterログイン', user_twitter_omniauth_authorize_path %>
+ <% end %>
+):
+1:    <% if user_signed_in? %>
+2:        <%= else %>
+3:          <%= link_to 'Twitterログイン', user_twitter_omniauth_authorize_path %>
+4:     <% end %>
+  
+app/views/pages/index.html.erb:2: syntax error, unexpected else
+app/views/pages/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:2: syntax error, unexpected else
+app/views/pages/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:2: syntax error, unexpected else
+app/views/pages/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:2: syntax error, unexpected else
+app/views/pages/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:2: syntax error, unexpected else
+app/views/pages/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:2: syntax error, unexpected else
+app/views/pages/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/pages/index.html.erb:6: syntax error, unexpected end, expecting ')'
+Started GET "/pages/index" for ::1 at 2020-08-28 06:56:39 +0900
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/index.html.erb:1
+  Rendered pages/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 10863)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 30.6ms | ActiveRecord: 0.9ms | Allocations: 22290)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-28 06:56:41 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1d6USxsPzcaInIHDk4UAUVAm6gXsQ6PaAhxQm9zIH+5po2yW8NB9pcqm3EE4QiWmcQ06MLZ9S3MxQBqMJVMLzQ=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 0.1ms | Allocations: 4319)
+
+
+Started GET "/" for ::1 at 2020-08-28 06:56:41 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.6ms | Allocations: 190)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 824)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:56:44 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  Rendered pages/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 488)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.0ms | Allocations: 7834)
+
+
+Started GET "/users/auth/twitter" for ::1 at 2020-08-28 06:56:49 +0900
+Started GET "/users/auth/twitter" for ::1 at 2020-08-28 06:56:49 +0900
+Started GET "/users/auth/twitter/callback?oauth_token=QBk9mQAAAAABDvnRAAABdDHsZJQ&oauth_verifier=9Sguw9eIr7aFUwTW0dY92ZHv0WJH7Wyx" for ::1 at 2020-08-28 06:56:51 +0900
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"QBk9mQAAAAABDvnRAAABdDHsZJQ", "oauth_verifier"=>"9Sguw9eIr7aFUwTW0dY92ZHv0WJH7Wyx"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? AND "users"."provider" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["uid", "816272815359787009"], ["provider", "twitter"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:8:in `find_for_oauth'
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1187)
+
+
+Started GET "/" for ::1 at 2020-08-28 06:56:52 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/miyamototomo/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.6ms | Allocations: 190)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 756)
+
+
+Started GET "/pages/index" for ::1 at 2020-08-28 06:57:00 +0900
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/index.html.erb:1
+  Rendered pages/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 915)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.2ms | Allocations: 7006)
+
+
