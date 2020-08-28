@@ -10,17 +10,25 @@
   </head>
 
   <body>
-
-  <header>
-  <nav>
-      <% if user_signed_in? %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
- <% end %>
-  </nav>
-</header>
-
+  
+    <header>
+     <nav>
+        <% if user_signed_in? %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <% end %>
+      </nav>
 
 
-    <%= yield %>
+    </header>
+    
+    <% if flash[:notice] %>
+        <div class="alert alert-primary"><%= flash[:notice] %></div>
+    <% end %>
+
+    <div class="container">
+       <%= yield %>
+    </div>
+
+
   </body>
 </html>
