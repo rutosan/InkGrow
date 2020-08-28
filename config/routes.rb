@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   get '', to: 'posts#index'
-  get "posts/new", to: 'posts#new'
+
+  get 'pages/index', to: 'pages#index'
 
   Rails.application.routes.draw do
     resources :posts, only: [:index, :new, :create, :show, :destroy]

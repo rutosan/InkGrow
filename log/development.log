@@ -9355,3 +9355,71 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 11081)
 
 
+Started GET "/posts" for ::1 at 2020-08-28 18:17:27 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `set_current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 11], ["OFFSET", 0]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 487.0ms | Allocations: 219819)
+Completed 500 Internal Server Error in 524ms (ActiveRecord: 2.9ms | Allocations: 224901)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x00007fee4b1d3dc8>:0x00007fee487aa3a8>
+Did you mean?  @posts):
+    17:     </tr>
+    18:   </thead>
+    19:   <tbody>
+    20:       <% posts.each do |post| %>
+    21:         <tr>
+    22:             <th><%= post.id %></th>
+    23:             <td><%= post.title %></td>
+  
+app/views/posts/index.html.erb:20
+Started GET "/posts" for ::1 at 2020-08-28 18:18:07 +0900
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `set_current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" LIMIT ? OFFSET ?[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/posts/index.html.erb:20
+  Rendered posts/index.html.erb within layouts/application (Duration: 23.9ms | Allocations: 6904)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 336ms (Views: 315.5ms | ActiveRecord: 2.2ms | Allocations: 30726)
+
+
+Started GET "/posts/new" for ::1 at 2020-08-28 18:18:10 +0900
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `set_current_user'
+  Rendering posts/new.html.erb within layouts/application
+  Rendered layouts/_error_messages.html.erb (Duration: 1.0ms | Allocations: 189)
+  Rendered posts/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1701)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 16.9ms | ActiveRecord: 0.2ms | Allocations: 11867)
+
+
+Started POST "/posts" for ::1 at 2020-08-28 18:18:13 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"z2kRlAf6iuuQpAJHrRfdIuEmqNIQRPszC3XG2fVTTb/0yj4gCU6ugBjuZinYI4C1cZrNaSkWmZ71RY2mDZjARg==", "post"=>{"name"=>"", "title"=>"", "content"=>""}, "commit"=>"投稿"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `set_current_user'
+  Rendering posts/new.html.erb within layouts/application
+  Rendered layouts/_error_messages.html.erb (Duration: 0.6ms | Allocations: 342)
+  Rendered posts/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 265ms (Views: 11.9ms | ActiveRecord: 0.1ms | Allocations: 101935)
+
+
