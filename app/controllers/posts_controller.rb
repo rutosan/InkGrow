@@ -12,6 +12,8 @@ class PostsController < ApplicationController
     @post = Post.new(flash[:board])
   end
 
+
+  
   def create
     @post = Post.new(post_params)
 
