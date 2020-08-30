@@ -1,21 +1,23 @@
 class PostsController < ApplicationController
-  before_action :set_target_post, only: %i[show destroy]
-
+  before_action :set_current_user_post, only: [:destroy]
+  before_action :authenticate_user!
 
   def index
     @posts = Post.page(params[:page]).per(15)
+
   end
 
 
 
   def new
-    @post = Post.new(flash[:board])
+    @post = current_user.posts.build
   end
 
 
   
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     if @post.save
       flash[:notice] = "記事が投稿されました!"
@@ -31,7 +33,12 @@ class PostsController < ApplicationController
 
   def show
     @posts = Post.all
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    @post.user_id = @post.user_id
+    @user = User.find_by(id: @post.user_id)
+    @comments = @post.comments
+    @comment = Comment.new
+    
   end
 
 
@@ -43,8 +50,18 @@ class PostsController < ApplicationController
   end
     
 
-  def set_target_post
-    @post = Post.find(params[:id])
+  def set_current_user_post
+    @post = current_user.posts.find(params[:id])
+  end
+
+
+
+  def ensure_correct_user
+    @post = Post.find_by(id:params[:id])
+    if @post.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/posts/index")
+    end
   end
 
 
@@ -53,7 +70,7 @@ class PostsController < ApplicationController
 
     # paramsから欲しいデータのみ抽出
     def post_params
-        params.require(:post).permit(:name, :title, :content)
+        params.require(:post).permit(:title, :image, :tag_list, :user_id)
     end
 
     

@@ -2,12 +2,16 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  get '', to: 'posts#index'
+  root 'posts#index'
 
   get 'pages/index', to: 'pages#index'
+  post "comments/:id/destroy" => "comments#destroy"
+  post "comments/:id/destroy" => "comments#destroy"
 
-  Rails.application.routes.draw do
-    resources :posts, only: [:index, :new, :create, :show, :destroy]
-  end
-    
+
+    resources :posts, only: [:index, :new, :create, :show, :destroy] do
+      resources :comments, only: [:create, :destroy]
+    end
+  
+    delete 'comments/:id', to: 'comments#destroy'
 end

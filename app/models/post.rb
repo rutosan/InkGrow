@@ -1,8 +1,17 @@
 class Post < ApplicationRecord
-
-  validates :name, presence: true, length: { maximum: 10 }
   validates :title, presence: true, length: { maximum: 30 }
-  validates :content, presence: true, length: { maximum: 1000 }
+  validates :image, presence: true
+  validates :user_id, {presence: true}
+  belongs_to :user
+  has_many :comments, foreign_key: 'post_id', dependent: :destroy
+  
 
+  mount_uploader :image, ImageUploader
+
+  def user
+    return User.find_by(id: self.user_id)
+  end
+
+  acts_as_taggable
 
 end

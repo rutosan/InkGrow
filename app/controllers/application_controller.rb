@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :set_current_user
+  before_action :authenticate_user!
   
   
   def set_current_user
@@ -14,4 +15,7 @@ class ApplicationController < ActionController::Base
       redirect_to("/pages/index")
       end
   end
+
+
+  
 end

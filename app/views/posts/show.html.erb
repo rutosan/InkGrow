@@ -2,18 +2,61 @@
     <div class="ml-auto posts_button">
     <%= link_to '投稿一覧', posts_path, class: "btn btn-outline-info" %>
     </div>
-    </div>
+</div>
 
 <div class="card">
   <div class="card-header bg-info text-white">
       <h4><%= @post.title %></h4>
   </div>
-  <div class="card-body">
-      <p class="card-text"><%= @post.content %></p>
+  <div class="tweet_user m-2">
+            <%= image_tag @user.image %>
+            <%= @user.name %>
+            <%= @user.nickname %>
   </div>
-  <div class="card-footer">
-    <p class="text-right font-weight-bold mr-10"><%= @post.name %></p>
+  <div class="card-body">
+    <%= image_tag @post.image.url %>
   </div>
 
+  <div class="card-body">
+    <td><%= @post.tag_list %></td><br>
+
   </div>
-  <%= link_to "削除" , @post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %>
+  
+
+</div>
+
+
+<% if current_user.id == @user.id %>
+
+<%= link_to "削除" , @post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %>
+
+<% end %>
+
+
+
+<h2>コメント一覧</h2>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.text_field :comment %>
+    <%= f.submit 'コメントする', class: "btn" %>
+  <% end %>
+
+
+  <% @comments.each do |comment| %>
+   <hr>
+    <% user = User.find_by(id: comment.user_id) %>
+      <div comment> 
+
+        <p>
+          <%= comment.comment %>
+        </p>
+     </div>
+
+
+    <% if current_user == user %>
+    <%= link_to "削除" ,post_comment_path(comment.id) , class: 'btn btn-outline-info', method: :delete, data: {confirm: "コメントを削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %>
+    <% end %>
+  <% end %>
+</div>
+       
+
+
