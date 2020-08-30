@@ -1,10 +1,40 @@
 @import "bootstrap"; 
 @import "posts";
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
   margin: 30px 0;
 }
 
+ul {
+  list-style: none;
+}
+
 li {
   margin: 10px;
+}
+
+.sidebar {
+  padding-top: 10px;
+  background-color: #556B2F;
+  width: 20%;
+  min-width: 250px;
+  height: 100%;
+  float: left;
+  position: sticky;
+  top: 0px;
+}
+
+.sidebar img {
+  width: 30px;
+  height: 30px;
 }

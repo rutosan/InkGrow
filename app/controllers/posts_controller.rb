@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.page(params[:page]).per(15)
+    @posts = Post.page(params[:page]).per(15).order(created_at: :desc)
 
   end
 
@@ -34,10 +34,10 @@ class PostsController < ApplicationController
   def show
     @posts = Post.all
     @post = Post.find_by(id: params[:id])
-    @post.user_id = @post.user_id
     @user = User.find_by(id: @post.user_id)
     @comments = @post.comments
     @comment = Comment.new
+    @like = Like.new
     
   end
 

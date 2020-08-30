@@ -1,0 +1,61 @@
+<section id="" class="">
+
+
+
+<div class="">
+
+<div>
+<img src="<%= @user.image %>" class = "e">
+<h1><%= @user.name %></h1>
+<h4><%= @user.nickname %></h4>
+
+</div>
+
+
+<% if current_user.id == @user.id %>
+  <p>
+    <%= link_to("プロフィールを編集","/users/:id/edit") %>
+  </p>
+  <% end %>
+     
+  <div class="post">
+    <% @user.posts.each do |post| %>
+      <div class="p_cont">
+        <div class="p_img">
+         <%= link_to(image_tag(post.image.url), "/posts/#{post.id}") %>
+        </div>
+        <div class="p_name">
+           <%= link_to post.title, "/posts/#{post.id}" %>
+        </div>
+        <div class="p_time">
+         <%= post.created_at.to_s(:datetime_base) %>
+         </div>
+      </div>
+      -------------
+    <% end %>
+ </div>
+
+
+
+ <div class="post">
+ <h3>いいねしている投稿</h3>
+<% @user.liked_posts.each do |post| %>
+  <div class="p_cont">
+        <div class="p_img">
+         <%= link_to(image_tag(post.image.url), "/posts/#{post.id}") %>
+        </div>
+        <div class="p_name">
+           <%= link_to post.title, "/posts/#{post.id}" %>
+        </div>
+        <div class="p_time">
+         <%= post.created_at.to_s(:datetime_base) %>
+         </div>
+      </div>
+<% end %>
+</div>
+    
+ </div>
+
+ </div>
+    </section>
+    

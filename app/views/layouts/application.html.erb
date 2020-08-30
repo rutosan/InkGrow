@@ -7,27 +7,60 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
-  <body>
+  <body class ="">
   
-    <header>
-    <% if flash[:notice] %>
-        <div class="alert alert-primary"><%= flash[:notice] %></div>
-    <% end %>
-     <nav>
-        <% if user_signed_in? %>
-        <%= image_tag current_user.image %>
-        <%= current_user.name %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        <% end %>
-      </nav>
+    <header class ="">
+      <% if flash[:notice] %>
+         <div class="alert alert-primary"><%= flash[:notice] %></div>
+      <% end %>
 
 
-    </header>
+      <% if user_signed_in? %>
+         <nav class="sidebar ">
+
+         <%= search_form_for @search do |f| %>
+          
+          <%= f.text_field :title_or_tags_name_cont, 
+              value: params.dig(:q,:title_or_tags_name_cont), 
+              placeholder: "イラストを検索", 
+              class: 'input' %>
+
+          <div class="actions">
+            <%= f.submit "検索" %>
+          </div>
+      <% end %>
+        
+
     
+           <ul>
+              <li>
+                 <%= link_to("/users/#{current_user.id}") do %>
+                    <%= image_tag current_user.image %>
+                     <%= current_user.name %>
+                 <% end %>
+               </li>
+              <li>
+                <%= link_to image_tag("/images/house.png"), "/posts", class: "menu_icon" %>
+                <%= link_to "ホーム", "/posts" %> 
+              </li>
+              <li>
+                <%= link_to image_tag("/images/exit.png"), destroy_user_session_path, class: "menu_icon" %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
 
-    <div class="container">
+
+          <div class="ml-4 posts_button">
+            <%= link_to '投稿', new_post_path, class: "btn btn-outline-info" %>
+          </div>
+        </nav>
+      <% end %>
+
+    </header>    
+    <div class="container class =""">
        <%= yield %>
     </div>
 

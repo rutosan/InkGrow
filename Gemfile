@@ -68,3 +68,6 @@ gem 'rmagick'
 
 gem 'acts-as-taggable-on'
 
+gem 'ransack'
+
+gem 'ransacker_translator'

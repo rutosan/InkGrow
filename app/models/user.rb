@@ -8,6 +8,8 @@ class User < ApplicationRecord
   
   has_many :posts, :dependent => :destroy
   has_many :comments, foreign_key: 'user_id', dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
 
   def self.find_for_oauth(auth)
    user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -28,9 +30,16 @@ class User < ApplicationRecord
   end
   
 
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
+
   private
 
   def self.dummy_email(auth)
    "#{auth.uid}-#{auth.provider}@example.com"
   end
+
+
+
 end
