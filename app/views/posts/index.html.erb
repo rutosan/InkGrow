@@ -1,50 +1,35 @@
 <div class="d-flex align-items-center">
     <h1>投稿一覧</h1>
 </div>
-<table class="table table-bordered border-primary table-hover table-sm posts_table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col" style="width: 40px">No.</th>
-      <th scope="col">タイトル</th>
-      <th scope="col" style="width: 100px, height:100px">画像</th>
-      <th scope="col">投稿者</th>
-      <th scope="col">投稿日</th>
-      <th scope="col">タグ</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+
+<div class="container-fluid">
+<div class="row">
       <% @search_posts.each do |post| %>
         <% @user = User.find_by(id: post.user_id) %>
-        <tr>
-            <th><%= post.id %></th>
-            <td><%= post.title %></td>
-            <td><%= image_tag post.image.url %></td>
-            <td class="tweet_user">
-            <%= image_tag @user.image %>
-            <%= @user.name %><br>
-            <%= @user.nickname %>
-            </td>
-            <td><%= post.created_at.to_s(:datetime_base) %></td>
-            <td><%= post.tag_list %></td>
-            <td><%= link_to '詳細', post, id: "detail-" + post.id.to_s, class: 'btn btn-outline-info' %>
-            
-            <% if @user.id == current_user.id %>
-              <td>
-              <%= link_to "削除" , post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %>
-              <% end %>
-            </td>
-            <td>
-            <%= post.liked_users.count %>いいね
-            </td>
-            
-            
 
-        </tr>
+  <div class="card col-sm-2 col-12 mt-3 ">
+    <%= link_to("/posts/#{post.id}") do %>
+      <div class="card_image d-flex align-items-center">
+        <%= image_tag(post.image.url) %>
+      </div>
+    <% end %>
+    <div class="card-body">
+      <h6 class="card-title"><%= link_to post.title, "/posts/#{post.id}" %></h6>
+      <div class="tweet_user">
+      <%= link_to("/users/#{@user.id}") do %>
+       <%= image_tag @user.image %>
+       <%= @user.name %>
       <% end %>
-      
-  </tbody>
-</table>
+  
+      </div>
+    </div>
+  </div>
+
+      <% end %>
+</div>
+</div>
+
+
+
 
 <%= paginate @posts %>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   get 'pages/index', to: 'pages#index'
+  get 'users/:id/likes', to: 'users#likes'
   post "comments/:id/destroy" => "comments#destroy"
   post "comments/:id/destroy" => "comments#destroy"
   delete 'comments/:id', to: 'comments#destroy'

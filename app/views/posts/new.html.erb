@@ -1,8 +1,5 @@
 <div class="d-flex align-items-center">
   <h1>投稿</h1>
-  <div class="ml-auto posts_button">
-    <%= link_to '投稿一覧', posts_path, class: 'btn btn-outline-info' %>
-  </div>
 </div>
 
 <% if flash[:error_messages] %>
@@ -18,21 +15,54 @@
 
 <%= form_for @post do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
+    
+    <div class="form-group">
+
+    <div class="prev_box">
+
+
+  <%= f.file_field :image, id: :post_img,class: :"text-center" %>
+  <% if @post.image.present? %>
+  <%= image_tag @posts.image, id: :img_prev %>
+  <% else %>
+  <%= image_tag "", id: :img_prev %>
+  <% end %>
+  
+    </div>
+
+  </div>
+
+
+<%# scriptここから %>
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#post_img").change(function(){
+        readURL(this);
+    });
+  });
+</script>
+
+<%# scriptここまで %>
+
 
     <div class="form-group">
         <%= f.label :title, '投稿タイトル' %>
-        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.text_field :title, placeholder: 'タイトル',  class: 'form-control' %>
     </div>
 
-    <div class="form-group">
-        <%= f.label :画像 %><br />
-        <%= f.file_field :image, class: "image" %>
-        
-    </div>
 
     <div class="form-group">
-    <%= f.label :post, :tag_list %>
-    <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
+    <%= f.label :post, 'タグ' %>
+    <%= f.text_field :tag_list, value: @post.tag_list.join(','), placeholder: '○○,△△,□□', class: "form-control" %>
     </div>
 
     

@@ -26,11 +26,11 @@ class ApplicationController < ActionController::Base
 
   def set_search
     if params[:q].present?
-    keywords = params[:q][:title_or_tags_name_cont].split(/[\p{blank}\s]+/)
+    keywords = params[:q][:title_or_tags_name_or_user_name_or_user_nickname_cont].split(/[\p{blank}\s]+/)
 
     @search = Post.ransack(
       combinator: 'and',
-      groupings: { 'a' => {title_or_tags_name_cont: keywords[0]}, 'b' => {title_or_tags_name_cont: keywords[1]}}
+      groupings: { 'a' => {title_or_tags_name_or_user_name_or_user_nickname_cont: keywords[0]}, 'b' => {title_or_tags_name_or_user_name_or_user_nickname_cont: keywords[1]}}
       )
     @search_posts = @search.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(20) 
 

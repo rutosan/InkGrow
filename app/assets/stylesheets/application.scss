@@ -1,40 +1,97 @@
 @import "bootstrap"; 
 @import "posts";
+@import "users";
 
-html {
+
+
+
+html,body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
-body {
+h1,h2,h3,h4,p,ul,li,nav {
   margin: 0;
   padding: 0;
+ 
 }
 
-h1 {
-  margin: 30px 0;
+.container-fluid {
+  overflow: scroll;
+  
 }
 
-ul {
-  list-style: none;
+a:hover {
+  opacity: 0.5;
+  text-decoration: none;
 }
 
 li {
-  margin: 10px;
+  list-style: none;
 }
 
 .sidebar {
   padding-top: 10px;
-  background-color: #556B2F;
-  width: 20%;
-  min-width: 250px;
+  background-color: #808000;
   height: 100%;
-  float: left;
-  position: sticky;
-  top: 0px;
+  margin: 0;
 }
 
+.sidebar ul {
+  height: 60%;
+}
+
+.sidebar li {
+  margin: 10px;
+  height: 50px;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #ffffff;
+}
+
+.sidebar li:hover {
+  background-color: rgba(255,255,255,0.5);
+}
+nav a {
+  color: #ffffff;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+
+
 .sidebar img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
+}
+
+.card {
+  background-color:rgba(255,255,255,0);
+  border: none;
+}
+
+.posts_button {
+  width: 100px;
+  border-radius: 5px;
+  border-bottom: solid 4px #4b0082;
+  background-color:#8a2be2;
+  color: #ffffff;
+  text-align: center;
+}
+
+.posts_button:hover {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.posts_button:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
 }

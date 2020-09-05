@@ -1,0 +1,49 @@
+
+<div class="text-center user_name">
+  <img src="<%= @user.image %>" class = "rounded-circle">
+  <h4><%= @user.name %></h4>
+  <p>@<%= @user.nickname %></p>
+  <% if current_user.id == @user.id %>
+    <p>
+      <%= link_to("プロフィールを編集","/users/:id/edit") %>
+    </p>
+  <% end %>
+</div>
+
+<div class="users_nav">
+  <ul class="nav">
+    <li class="nav-link nonactive"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+    <li class="nav-link active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+  </ul>
+</div>
+     
+ 
+<div class="container-fluid">
+<div class="row">
+      <% @user.liked_posts.each do |post| %>
+        <% @user = User.find_by(id: post.user_id) %>
+
+  <div class="card col-sm-2 col-12 mt-3 ">
+    <%= link_to("/posts/#{post.id}") do %>
+      <div class="card_image d-flex align-items-center">
+        <%= image_tag(post.image.url) %>
+      </div>
+    <% end %>
+    <div class="card-body">
+      <h6 class="card-title"><%= link_to post.title, "/posts/#{post.id}" %></h6>
+      <div class="tweet_user">
+      <%= link_to("/users/#{@user.id}") do %>
+       <%= image_tag @user.image %>
+       <%= @user.name %>
+      <% end %>
+  
+      </div>
+    </div>
+  </div>
+
+      <% end %>
+</div>
+</div>
+
+
+    

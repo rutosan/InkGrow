@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
       flash[:notice] = 'コメントが送信されました'
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = 'コメントを入力してください。'
+      flash[:notice] = 'コメントの投稿に失敗しました。コメントが入力されていないまたは50文字以上入力されています。'
+      
       redirect_back(fallback_location: root_path)
     end
  end

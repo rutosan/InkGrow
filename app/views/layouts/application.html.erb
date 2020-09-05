@@ -4,7 +4,7 @@
     <title>InkGrow</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,53 +17,63 @@
          <div class="alert alert-primary"><%= flash[:notice] %></div>
       <% end %>
 
-
-      <% if user_signed_in? %>
-         <nav class="sidebar ">
-
-         <%= search_form_for @search do |f| %>
-          
-          <%= f.text_field :title_or_tags_name_cont, 
-              value: params.dig(:q,:title_or_tags_name_cont), 
-              placeholder: "イラストを検索", 
-              class: 'input' %>
-
-          <div class="actions">
-            <%= f.submit "検索" %>
+      </header>    
+      <div class= "row">
+        <% if user_signed_in? %>
+       <div class="m-0 p-0 col-md-2 sidebar">
+          <nav class="pt-4 m-0 ">
+          <div class="ml-3">
+           <%= search_form_for @search do |f| %>  
+            <%= f.text_field :title_or_tags_name_or_user_name_or_user_nickname_cont, 
+              value: params.dig(:q,:title_or_tags_name_or_user_name_or_user_nickname_cont), 
+              placeholder: "検索", 
+              class: 'input w-75' %>
+            <div class="actions mb-3 ">
+              <%= f.submit "検索" %>
+            </div>
           </div>
-      <% end %>
-        
-
-    
-           <ul>
-              <li>
-                 <%= link_to("/users/#{current_user.id}") do %>
-                    <%= image_tag current_user.image %>
-                     <%= current_user.name %>
-                 <% end %>
-               </li>
-              <li>
-                <%= link_to image_tag("/images/house.png"), "/posts", class: "menu_icon" %>
-                <%= link_to "ホーム", "/posts" %> 
-              </li>
-              <li>
-                <%= link_to image_tag("/images/exit.png"), destroy_user_session_path, class: "menu_icon" %>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-              </li>
+           <% end %>
+            <ul>
+                <%= link_to("/users/#{current_user.id}") do %>
+                  <li class="pl-4 pt-3">
+                  <%= image_tag current_user.image, class:"rounded-circle" %>
+                  <%= current_user.name %>
+                  </li>
+                <% end %>
+                <%= link_to("/posts") do %>
+                  <li class="pl-4 pt-3 row">
+                    <%= image_tag("/images/house.png") %>
+                    <p class="pt-2">ホーム</p>
+                  </li>
+                <% end %>
+                  <li class="pl-4 pt-3">
+                    <%= link_to image_tag("/images/exit.png"), destroy_user_session_path, class: "menu_icon" %>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> 
+                  </li>          
+                <div class="ml-4 mt-3 ">
+                  <%= link_to '投稿', new_post_path, class: "btn posts_button" %>
+                </div>
+              
             </ul>
+          </nav>  
+      </div>
+        <% end %>   
+  
+  <% if user_signed_in? %>    
+      <div class="container-fluid m-0 p-0 pt-5 col-md-10">
+        <%= yield %>
+      </div>    
+    <% else %>
+      <div class=" m-0 p-0 col-12 contents">
+        <%= yield %>
+      </div>  
+  <% end %>   
 
-
-          <div class="ml-4 posts_button">
-            <%= link_to '投稿', new_post_path, class: "btn btn-outline-info" %>
-          </div>
-        </nav>
-      <% end %>
-
-    </header>    
-    <div class="container class =""">
-       <%= yield %>
-    </div>
-
+      <% if user_signed_in? %>    
+        <div class="container m-0 p-0  col-md-0">
+            
+        </div>
+     <% end %>   
 
   </body>
 </html>
