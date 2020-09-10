@@ -56,7 +56,7 @@
     <div class="form-group">
         <%= f.text_field :tag_list, value: @post.tag_list.join(','), placeholder: '○○,△△,□□', class: "form-control" %>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-5">
         <%= f.submit '投稿する', class: 'btn btn-info btn-block' %>
     </div>
 <% end %>
