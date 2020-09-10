@@ -71,3 +71,5 @@ gem 'acts-as-taggable-on'
 gem 'ransack'
 
 gem 'ransacker_translator'
+
+gem 'font-awesome-sass'

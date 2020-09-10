@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center page_head">
     <h1>投稿一覧</h1>
 </div>
 
@@ -7,7 +7,7 @@
       <% @search_posts.each do |post| %>
         <% @user = User.find_by(id: post.user_id) %>
 
-  <div class="card col-sm-2 col-12 mt-3 ">
+  <div class="card col-sm-4 col-md-3 col-lg-2 col-12 mt-3 ">
     <%= link_to("/posts/#{post.id}") do %>
       <div class="card_image d-flex align-items-center">
         <%= image_tag(post.image.url) %>

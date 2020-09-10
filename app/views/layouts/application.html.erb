@@ -11,28 +11,44 @@
   </head>
 
   <body class ="">
-  
+  <% if user_signed_in? %>
     <header class ="">
       <% if flash[:notice] %>
          <div class="alert alert-primary"><%= flash[:notice] %></div>
       <% end %>
 
-      </header>    
-      <div class= "row">
-        <% if user_signed_in? %>
-       <div class="m-0 p-0 col-md-2 sidebar">
-          <nav class="pt-4 m-0 ">
-          <div class="ml-3">
-           <%= search_form_for @search do |f| %>  
+      <nav class="header_menu row mt-3">
+      <div class="menu">
+          <div id="open_menu">
+            <%= image_tag("/images/blackmenu.png") %>
+          </div>
+      </div>
+          <li class="d-none d-sm-block">
+        <%= link_to("/posts") do %>
+            <%= image_tag("/images/タイトル-ロゴ.png") %>
+        <% end %>
+          </li>
+        <li class="search_bar d-none d-md-block">
+          <%= search_form_for @search do |f| %>  
             <%= f.text_field :title_or_tags_name_or_user_name_or_user_nickname_cont, 
               value: params.dig(:q,:title_or_tags_name_or_user_name_or_user_nickname_cont), 
               placeholder: "検索", 
-              class: 'input w-75' %>
-            <div class="actions mb-3 ">
+              class: 'input w-75 rounded' %>
               <%= f.submit "検索" %>
-            </div>
-          </div>
            <% end %>
+        </li>
+      </nav>
+
+      </header>    
+
+
+      <div class= "row">
+        
+
+
+
+<div class="m-0 p-0 col-lg-2">
+          <nav class="p-0 pt-4 m-0 sidebar col-md-2">
             <ul>
                 <%= link_to("/users/#{current_user.id}") do %>
                   <li class="pl-4 pt-3">
@@ -56,11 +72,16 @@
               
             </ul>
           </nav>  
-      </div>
         <% end %>   
+
+
+      </div>
   
   <% if user_signed_in? %>    
-      <div class="container-fluid m-0 p-0 pt-5 col-md-10">
+    <div id="whitearea">
+    </div>
+
+      <div class="container-fluid pt-5 col-12 logined_contents">
         <%= yield %>
       </div>    
     <% else %>
@@ -70,10 +91,35 @@
   <% end %>   
 
       <% if user_signed_in? %>    
-        <div class="container m-0 p-0  col-md-0">
+        <div class="container m-0 p-0  d-none">
             
         </div>
      <% end %>   
+
+
+<script>
+    $(function(){
+  $("#open_menu").click(
+    function() {
+    $('.sidebar').fadeIn();
+    $('#open_menu').hide();
+    $('#whitearea').show();
+    $('body').css('overflow','hidden');
+  });
+
+  $('#whitearea').click(
+      function() {
+        $('#open_menu').fadeIn();
+        $('.sidebar').hide();
+        $('#whitearea').hide();
+        $('body').css('overflow','scroll');
+    });
+
+
+});
+
+</script>
+
 
   </body>
 </html>

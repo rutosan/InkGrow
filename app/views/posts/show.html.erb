@@ -1,31 +1,60 @@
-  <div class="m-0 p-0 text-center">
+  <div class="mx-auto p-0 text-center posted_image mt-5">
     <%= image_tag @post.image.url %>  
   </div>
-  <div class="container">
+  <div class="container pt-3 mt-5">
     <div class="post_menu w-100">
       <% if current_user.already_liked?(@post) %>
         <%= link_to(post_like_path(@post), method: :delete) do %>
           <span class="fa fa-heart like-btn-unlike mr-3"></span>
         <% end %>
+        <p id="open_likedlist">
         <%= @post.likes.count %>名がいいね
+        </p>
       <% else %>
           <%= link_to(post_likes_path(@post), method: :POST) do %>
             <span class="fa fa-heart like-btn mr-3 "></span>
           <% end %>
-          <%= @post.likes.count %>名がいいね
-      <% end %>
-      <p>いいねしたユーザー</p>
-      <% if current_user.id == @user.id %>
-        <%= link_to "削除" , @post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %>
-      <% end %>
+      <p id="open_likedlist">
+        <%= @post.likes.count %>名がいいね
+      </p>
+      <% end %><br>
     </div>
+
+
+  <div id="liked_list">
+  <h5>いいねしたユーザー</h5>
     <% @post.liked_users.each do |user| %>
       <div id="liked_userlist">
-        <%= link_to("/users/#{user.id}") do %>
-          <p>@<%= user.nickname %></p>
+        <%= link_to("/users/#{user.id}", class: 'd-flex mb-4') do %>
+          <%= image_tag user.image, class:"pr-2 rounded-circle d-flex" %>
+          <p class="mt-2"><%= user.name %></p>
         <% end %>    
       </div>
     <% end %>
+  </div>
+
+
+      
+
+  <script>
+    $(function(){
+  $("#open_likedlist").click(
+    function() {
+    $('#liked_list').fadeIn();
+    $('body').css('overflow','hidden');
+    $('#whitearea').show();
+  });
+
+  $('#whitearea').click(
+      function() {
+        $('#liked_list').hide();
+        $('body').css('overflow','scroll');
+        $('#whitearea').hide();
+    });
+});
+</script>
+
+
 
     <div class="">
       <h3><%= @post.title %></h3>
@@ -41,18 +70,22 @@
         <%= @user.name %>
       <% end %>
     </div>
+    <% if current_user.id == @user.id %>
+        <%= link_to "投稿を削除" , @post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %>
+      <% end %>
 
-    <div class="container">
+    <div class="container mt-5">
       <h5>コメント</h5>
       <div class="row ">
-      <%= image_tag current_user.image, class:"pr-2 rounded-circle" %>
+      <%= image_tag current_user.image, class:"pr-2 rounded-circle mr-4" %>
       <%= form_for [@post, @comment] do |f| %>
-        <%= f.text_field :comment %>
-        <%= f.submit 'コメントする', class: "btn" %>
+        <%= f.text_field :comment, class: 'mt-3' %>
+        <%= f.submit 'コメントする', class: "btn btn-outline-dark ml-3" %>
       <% end %>
       </div>
       <div class="border-bottom pt-5"></div>
       <% @comments.each do |comment| %>
+      <div class="under_line"></div>
         <% user = User.find_by(id: comment.user_id) %>
         <div class="tweet_user pt-3 pb-1">
           <%= image_tag user.image %>
@@ -72,7 +105,7 @@
             <% end %>
           </div>
         </div>
-        <div class="under_line"></div>
+        
       <% end %>
 
     </div>
