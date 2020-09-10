@@ -81,13 +81,13 @@
   flex-direction: column;
 }
 
-.posted_image,.prev_image img {
-  width: 80%;
+.prev_image img {
+  width: 60%;
   max-height: 400px;
   background-color: #ffffff;
 }
 
-.posted_image,.prev_image {
+.prev_image {
   text-align: center;
 }
 
@@ -96,4 +96,10 @@
   width: 70%;
   margin: 0 auto;
   margin-top: 20px;
+}
+
+
+.wrapp{
+  display: flex;
+  flex-direction: column;
 }
