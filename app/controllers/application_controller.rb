@@ -20,6 +20,22 @@ class ApplicationController < ActionController::Base
   end
 
 
+  public function storeIcon(Request $request)
+    {
+            $file=$params['photo'];
+
+            // s3のuploadsファイルに追加
+            $path = Storage::disk('s3')->put('/icon_images',$file, 'public');
+
+            // パスを、ユーザのicon_image_urlというカラムに保存
+            $user=\Auth::user();
+            $user->icon_image_url = $path;
+            $user->save();
+
+            return view('setting.channel');
+    }
+
+
   def after_sign_in_path_for(resource)
     user_path(resource.id)
   end
@@ -46,6 +62,4 @@ class ApplicationController < ActionController::Base
   end
 
   end
-  
-    
 end
