@@ -8,8 +8,8 @@ CarrierWave.configure do |config|
   config.fog_directory  = 'inkgrow'
   config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: Rails.application.credentials.aws[:AKIAJMWSAPVAFKV5VAMQ],
-    aws_secret_access_key: Rails.application.credentials.aws[:secreh6wud1IDgKRl7SHzuheeCJBLtW0bXSQgMW4Qwmst_access_key],
+    aws_access_key_id: Rails.application.credentials.aws[:'AKIAJMWSAPVAFKV5VAMQ'],
+    aws_secret_access_key: Rails.application.credentials.aws[:'secreh6wud1IDgKRl7SHzuheeCJBLtW0bXSQgMW4Qwmst_access_key'],
 
     region: ENV['ap-northeast-1'],
     path_style: true
