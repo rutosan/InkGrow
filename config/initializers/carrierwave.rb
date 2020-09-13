@@ -13,7 +13,4 @@ CarrierWave.configure do |config|
       region: ENV['ap-northeast-1'],
       path_style: true
   }
-
-  config.fog_directory  = 'inkgrow'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/inkgrow'
 end
