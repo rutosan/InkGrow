@@ -23,7 +23,7 @@
       <div class="card col-sm-4 col-md-3 col-lg-2 col-12 mt-3 ">
         <%= link_to("/posts/#{post.id}") do %>
           <div class="card_image d-flex align-items-center">
-            <%= image_tag post.image.to_s %>
+            <%= image_tag(post.image.url) %>
           </div>
         <% end %>
         <div class="card-body">
