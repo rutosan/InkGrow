@@ -27,7 +27,7 @@ class PostsController < ApplicationController
           post: @post,
           error_messages: @post.errors.full_messages
         }
-       end
+    end
     
   end
 

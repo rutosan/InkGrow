@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:user_id])
   end
   
-  # authenticate_userメソッドを定義してください
   def authenticate_user
     if @current_user == nil
       flash[:notice] = "ログインが必要です"
@@ -19,21 +18,6 @@ class ApplicationController < ActionController::Base
       end
   end
 
-
-  public function storeIcon(Request $request)
-    {
-            $file=$params['photo'];
-
-            // s3のuploadsファイルに追加
-            $path = Storage::disk('s3')->put('/icon_images',$file, 'public');
-
-            // パスを、ユーザのicon_image_urlというカラムに保存
-            $user=\Auth::user();
-            $user->icon_image_url = $path;
-            $user->save();
-
-            return view('setting.channel');
-    }
 
 
   def after_sign_in_path_for(resource)
