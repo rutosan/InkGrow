@@ -3,5 +3,5 @@ class ApplicationRecord < ActiveRecord::Base
 
   include RansackerTranslator
   
-  ransacker_translate :title, :tags_name
+  ransacker_translate :title, :tags_name, :user_name, :user_nickname
 end
