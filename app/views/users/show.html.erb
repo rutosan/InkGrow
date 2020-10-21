@@ -18,7 +18,7 @@
      
   <div class="container-fluid">
 <div class="row">
-      <% @search_posts.each do |post| %>
+      <% @user.posts.each do |post| %>
         <% @user = User.find_by(id: post.user_id) %>
 
   <div class="card col-sm-4 col-md-3 col-lg-2 col-12 mt-3 ">
