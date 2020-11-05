@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2020_08_30_030753) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "title"
+    t.string "title"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "image"
-    t.integer "user_id"
+    t.string "image"
+    t.string "user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_08_30_030753) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
@@ -75,11 +75,11 @@ ActiveRecord::Schema.define(version: 2020_08_30_030753) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "provider"
-    t.integer "uid"
-    t.integer "name"
-    t.integer "nickname"
-    t.integer "image"
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.string "nickname"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
